@@ -16,6 +16,13 @@ const supabaseClient = supabase.createClient(
 
 
 // ======================================================
+// VARIABILE GLOBALE
+// ======================================================
+
+let toateStantele = [];
+
+
+// ======================================================
 // FUNCTIE SIMPLA PENTRU CITIT CAMPURI
 // ======================================================
 
@@ -26,6 +33,63 @@ function citesteCamp(id) {
         .value
         .toLowerCase()
         .trim();
+
+}
+
+
+// ======================================================
+// AUTOCOMPLETE CLIENT
+// ======================================================
+
+function actualizeazaAutocompleteClient() {
+
+    const clientInput = citesteCamp("client");
+
+    const autocompleteDiv =
+        document.getElementById("client_autocomplete");
+
+    autocompleteDiv.innerHTML = "";
+
+
+    if (clientInput.length === 0) {
+        return;
+    }
+
+
+    const clientiGasiti = [
+        ...new Set(
+            toateStantele
+                .map(stanta => stanta.client || "")
+                .filter(client =>
+                    client.toLowerCase().includes(clientInput)
+                )
+        )
+    ];
+
+
+    clientiGasiti.forEach(client => {
+
+        const div = document.createElement("div");
+
+        div.className = "autocomplete-item";
+
+        div.innerText = client;
+
+
+        div.addEventListener("click", () => {
+
+            document.getElementById("client").value = client;
+
+            autocompleteDiv.innerHTML = "";
+
+            afiseazaStante();
+
+        });
+
+
+        autocompleteDiv.appendChild(div);
+
+    });
 
 }
 
@@ -58,6 +122,9 @@ async function afiseazaStante() {
         .select("*");
 
 
+    toateStantele = data || [];
+
+
     // ===== AFISARE EROARE =====
 
     if (error) {
@@ -79,7 +146,7 @@ async function afiseazaStante() {
 
     // ===== FILTRARE MULTIPLA =====
 
-    const stanteFiltrate = data.filter(stanta => {
+    const stanteFiltrate = toateStantele.filter(stanta => {
 
         return (
             ((stanta.client || "").toLowerCase().includes(filtre.client)) &&
@@ -194,6 +261,12 @@ document.addEventListener("DOMContentLoaded", () => {
             .addEventListener("input", afiseazaStante);
 
     });
+
+
+    document
+        .getElementById("client")
+        .addEventListener("input", actualizeazaAutocompleteClient);
+
 
     afiseazaStante();
 
