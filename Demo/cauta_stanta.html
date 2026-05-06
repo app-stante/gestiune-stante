@@ -11,6 +11,9 @@
 
     <!-- ===== CSS ===== -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- ===== SUPABASE ===== -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -21,28 +24,30 @@
 
         <!-- ===== FILTRE ===== -->
 
-        <input type="text" placeholder="Client">
+        <input type="text" id="client" placeholder="Client">
 
-        <input type="text" placeholder="Nr cda vechi">
+        <input type="text" id="nr_cda_vechi" placeholder="Nr cda vechi">
 
-        <input type="text" placeholder="Tip produs">
+        <input type="text" id="tip_produs" placeholder="Tip produs">
 
-        <input type="text" placeholder="Utilaj">
+        <input type="text" id="utilaj" placeholder="Utilaj">
 
-        <input type="text" placeholder="Zona">
+        <input type="text" id="zona" placeholder="Zona">
 
-        <input type="text" placeholder="Locatie">
+        <input type="text" id="locatie" placeholder="Locatie">
 
-        <input type="text" placeholder="Status stanta">
+        <input type="text" id="status_stanta" placeholder="Status stanta">
 
         <!-- ===== REZULTATE ===== -->
 
         <div id="rezultate">
-            Rezultatele vor aparea aici
+            Se incarca...
         </div>
 
     </div>
 
+    <!-- ===== APP JS ===== -->
+    <script src="app.js"></script>
+
 </body>
 </html>
-
