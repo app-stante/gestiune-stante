@@ -23,6 +23,11 @@ async function afiseazaStante() {
 
     const rezultateDiv = document.getElementById("rezultate");
 
+    const clientInput = document
+        .getElementById("client")
+        .value
+        .toLowerCase();
+
     rezultateDiv.innerHTML = "Se incarca...";
 
 
@@ -48,23 +53,34 @@ async function afiseazaStante() {
             </div>
         `;
 
-        console.log(error);
-
         return;
     }
 
 
+    // ===== FILTRARE CLIENT =====
+
+    const stanteFiltrate = data.filter(stanta => {
+
+        const client = (stanta.client || "")
+            .toLowerCase();
+
+        return client.includes(clientInput);
+
+    });
+
+
     // ===== NU EXISTA DATE =====
 
-    if (data.length === 0) {
+    if (stanteFiltrate.length === 0) {
 
         rezultateDiv.innerHTML = `
             <div style="
                 background:#222;
                 padding:20px;
                 border-radius:10px;
+                color:white;
             ">
-                Nu exista stante in baza de date
+                Nu exista rezultate
             </div>
         `;
 
@@ -77,7 +93,7 @@ async function afiseazaStante() {
     let html = "";
 
 
-    data.forEach(stanta => {
+    stanteFiltrate.forEach(stanta => {
 
         html += `
 
@@ -116,6 +132,15 @@ async function afiseazaStante() {
 
     rezultateDiv.innerHTML = html;
 }
+
+
+// ======================================================
+// EVENIMENT FILTRU CLIENT
+// ======================================================
+
+document
+    .getElementById("client")
+    .addEventListener("input", afiseazaStante);
 
 
 // ======================================================
