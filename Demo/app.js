@@ -16,6 +16,21 @@ const supabaseClient = supabase.createClient(
 
 
 // ======================================================
+// FUNCTIE SIMPLA PENTRU CITIT CAMPURI
+// ======================================================
+
+function citesteCamp(id) {
+
+    return document
+        .getElementById(id)
+        .value
+        .toLowerCase()
+        .trim();
+
+}
+
+
+// ======================================================
 // AFISARE STANTE
 // ======================================================
 
@@ -23,10 +38,15 @@ async function afiseazaStante() {
 
     const rezultateDiv = document.getElementById("rezultate");
 
-    const clientInput = document
-        .getElementById("client")
-        .value
-        .toLowerCase();
+    const filtre = {
+        client: citesteCamp("client"),
+        nr_cda_vechi: citesteCamp("nr_cda_vechi"),
+        tip_produs: citesteCamp("tip_produs"),
+        utilaj: citesteCamp("utilaj"),
+        zona: citesteCamp("zona"),
+        locatie: citesteCamp("locatie"),
+        status_stanta: citesteCamp("status_stanta")
+    };
 
     rezultateDiv.innerHTML = "Se incarca...";
 
@@ -57,14 +77,19 @@ async function afiseazaStante() {
     }
 
 
-    // ===== FILTRARE CLIENT =====
+    // ===== FILTRARE MULTIPLA =====
 
     const stanteFiltrate = data.filter(stanta => {
 
-        const client = (stanta.client || "")
-            .toLowerCase();
-
-        return client.includes(clientInput);
+        return (
+            ((stanta.client || "").toLowerCase().includes(filtre.client)) &&
+            ((stanta.nr_cda_vechi || "").toLowerCase().includes(filtre.nr_cda_vechi)) &&
+            ((stanta.tip_produs || "").toLowerCase().includes(filtre.tip_produs)) &&
+            ((stanta.utilaj || "").toLowerCase().includes(filtre.utilaj)) &&
+            ((stanta.zona || "").toLowerCase().includes(filtre.zona)) &&
+            ((stanta.locatie || "").toLowerCase().includes(filtre.locatie)) &&
+            ((stanta.status_stanta || "").toLowerCase().includes(filtre.status_stanta))
+        );
 
     });
 
@@ -120,7 +145,19 @@ async function afiseazaStante() {
             </div>
 
             <div>
+                <b>Tip produs:</b> ${stanta.tip_produs || "-"}
+            </div>
+
+            <div>
                 <b>Utilaj:</b> ${stanta.utilaj || "-"}
+            </div>
+
+            <div>
+                <b>Locatie:</b> ${stanta.locatie || "-"}
+            </div>
+
+            <div>
+                <b>Status:</b> ${stanta.status_stanta || "-"}
             </div>
 
         </div>
@@ -140,9 +177,23 @@ async function afiseazaStante() {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    document
-        .getElementById("client")
-        .addEventListener("input", afiseazaStante);
+    const campuriFiltru = [
+        "client",
+        "nr_cda_vechi",
+        "tip_produs",
+        "utilaj",
+        "zona",
+        "locatie",
+        "status_stanta"
+    ];
+
+    campuriFiltru.forEach(id => {
+
+        document
+            .getElementById(id)
+            .addEventListener("input", afiseazaStante);
+
+    });
 
     afiseazaStante();
 
