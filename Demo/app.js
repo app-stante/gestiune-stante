@@ -7,7 +7,7 @@
 
 const SUPABASE_URL = "https://ulgbamusntxfpuagmfww.supabase.co";
 
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVsZ2JhbXVzbnR4ZnB1YWdtZnd3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwNDIwNDcsImV4cCI6MjA5MzYxODA0N30.UfqT_yJkwUQ7cyaAyoA0DEtUnq1yFPLZsfx1G0gth-Q";
+const SUPABASE_ANON_KEY = "sb_publishable_pWwpM0_vC0PWxunbTjBeUA_KfdVsr4k";
 
 const supabaseClient = supabase.createClient(
     SUPABASE_URL,
