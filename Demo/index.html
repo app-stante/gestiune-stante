@@ -1,42 +1,40 @@
 <!DOCTYPE html>
-
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
-<title>Gestiune Stante</title>
+    <title>Gestiune Stante</title>
 
-<!-- ===== MANIFEST PWA ===== -->
-<link rel="manifest" href="manifest.json">
+    <!-- ===== MANIFEST PWA ===== -->
+    <link rel="manifest" href="manifest.json">
 
-<!-- ===== CSS ===== -->
-<link rel="stylesheet" href="style.css">
-```
-
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-```
-<!-- ===== APLICATIE ===== -->
-<div id="app">
+    <!-- ===== APLICATIE ===== -->
+    <div id="app">
 
-    <h1>GESTIUNE STANTE</h1>
+        <h1>GESTIUNE STANTE</h1>
 
-    <button id="btn-cauta-stanta">
-        Cauta stanta
-    </button>
+        <!-- ===== BUTON CAUTA STANTA ===== -->
 
-    <button id="btn-adauga-stanta">
-        Adauga stanta
-    </button>
+        <button onclick="window.location.href='cauta_stanta.html'">
+            Cauta stanta
+        </button>
 
-</div>
+        <!-- ===== BUTON ADAUGA STANTA ===== -->
 
-<!-- ===== APP JS ===== -->
-<script src="app.js"></script>
-```
+        <button>
+            Adauga stanta
+        </button>
+
+    </div>
+
+    <!-- ===== APP JS ===== -->
+    <script src="app.js"></script>
 
 </body>
 </html>
