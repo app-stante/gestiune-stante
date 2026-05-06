@@ -69,7 +69,7 @@ async function afiseazaStante() {
     });
 
 
-    // ===== NU EXISTA DATE =====
+    // ===== NU EXISTA REZULTATE =====
 
     if (stanteFiltrate.length === 0) {
 
@@ -135,16 +135,15 @@ async function afiseazaStante() {
 
 
 // ======================================================
-// EVENIMENT FILTRU CLIENT
-// ======================================================
-
-document
-    .getElementById("client")
-    .addEventListener("input", afiseazaStante);
-
-
-// ======================================================
 // START
 // ======================================================
 
-afiseazaStante();
+document.addEventListener("DOMContentLoaded", () => {
+
+    document
+        .getElementById("client")
+        .addEventListener("input", afiseazaStante);
+
+    afiseazaStante();
+
+});
