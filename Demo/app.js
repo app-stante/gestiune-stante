@@ -16,29 +16,37 @@ const supabaseClient = supabase.createClient(
 
 
 // ======================================================
-// AFISARE STANTE
+// TEST CITIRE STANTE
 // ======================================================
 
 async function afiseazaStante() {
 
     const rezultateDiv = document.getElementById("rezultate");
 
-    rezultateDiv.innerHTML = "Se incarca stantele...";
+    rezultateDiv.innerHTML = "Se incarca...";
 
 
-    // ===== CITIRE BAZA DE DATE =====
+    // ===== TEST SUPABASE =====
 
     const { data, error } = await supabaseClient
         .from("stante")
         .select("*");
 
 
-    // ===== EROARE =====
+    // ===== AFISARE EROARE =====
 
     if (error) {
 
-        rezultateDiv.innerHTML =
-            "Eroare la citirea bazei de date";
+        rezultateDiv.innerHTML = `
+            <div style="
+                background:red;
+                color:white;
+                padding:20px;
+                border-radius:10px;
+            ">
+                ${error.message}
+            </div>
+        `;
 
         console.log(error);
 
@@ -46,52 +54,33 @@ async function afiseazaStante() {
     }
 
 
-    // ===== NU EXISTA STANTE =====
+    // ===== NU EXISTA DATE =====
 
     if (data.length === 0) {
 
-        rezultateDiv.innerHTML =
-            "Nu exista stante in baza de date";
+        rezultateDiv.innerHTML = `
+            <div style="
+                background:#222;
+                padding:20px;
+                border-radius:10px;
+            ">
+                Nu exista stante in baza de date
+            </div>
+        `;
 
         return;
     }
 
 
-    // ===== AFISARE STANTE =====
+    // ===== AFISARE DATE =====
 
-    let html = "";
-
-
-    data.forEach(stanta => {
-
-        html += `
-            <div style="
-                background:#222;
-                padding:15px;
-                margin-bottom:15px;
-                border-radius:10px;
-            ">
-
-                <b>${stanta.denumire_stanta || "-"}</b><br><br>
-
-                Client: ${stanta.client || "-"}<br>
-                Tip produs: ${stanta.tip_produs || "-"}<br>
-                Utilaj: ${stanta.utilaj || "-"}<br>
-                Zona: ${stanta.zona || "-"}<br>
-                Locatie: ${stanta.locatie || "-"}<br>
-                Status: ${stanta.status_stanta || "-"}<br>
-
-            </div>
-        `;
-    });
-
-
-    rezultateDiv.innerHTML = html;
+    rezultateDiv.innerHTML =
+        "Exista " + data.length + " stante in baza de date";
 }
 
 
 // ======================================================
-// START APLICATIE
+// START
 // ======================================================
 
 afiseazaStante();
