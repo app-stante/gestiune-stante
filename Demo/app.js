@@ -16,7 +16,7 @@ const supabaseClient = supabase.createClient(
 
 
 // ======================================================
-// TEST CITIRE STANTE
+// AFISARE STANTE
 // ======================================================
 
 async function afiseazaStante() {
@@ -26,7 +26,7 @@ async function afiseazaStante() {
     rezultateDiv.innerHTML = "Se incarca...";
 
 
-    // ===== TEST SUPABASE =====
+    // ===== CITIRE SUPABASE =====
 
     const { data, error } = await supabaseClient
         .from("stante")
@@ -72,10 +72,49 @@ async function afiseazaStante() {
     }
 
 
-    // ===== AFISARE DATE =====
+    // ===== CONSTRUIRE HTML =====
 
-    rezultateDiv.innerHTML =
-        "Exista " + data.length + " stante in baza de date";
+    let html = "";
+
+
+    data.forEach(stanta => {
+
+        html += `
+
+        <div style="
+            background:#1e1e1e;
+            border:1px solid #d4af37;
+            border-radius:12px;
+            padding:15px;
+            margin-top:15px;
+            color:white;
+        ">
+
+            <div style="
+                font-size:22px;
+                font-weight:bold;
+                color:#d4af37;
+                margin-bottom:10px;
+            ">
+                ${stanta.denumire_stanta || "-"}
+            </div>
+
+            <div>
+                <b>Client:</b> ${stanta.client || "-"}
+            </div>
+
+            <div>
+                <b>Utilaj:</b> ${stanta.utilaj || "-"}
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+
+    rezultateDiv.innerHTML = html;
 }
 
 
