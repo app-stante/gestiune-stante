@@ -3,7 +3,6 @@
 ======================================================= */
 
 /* ===== RESET GENERAL ===== */
-/* Curata marginile standard ale browserului */
 
 * {
     margin: 0;
@@ -11,278 +10,180 @@
     box-sizing: border-box;
 }
 
-/* ===== FUNDAL PAGINA ===== */
-/* Fundalul general si centrarea telefonului pe desktop */
+/* =======================================================
+   FUNDAL GENERAL
+======================================================= */
 
 body {
+
     background:
         radial-gradient(circle at top, #2a2414 0%, #111111 42%, #050505 100%);
-
-    color: #ffffff;
 
     font-family: Arial, sans-serif;
 
     min-height: 100vh;
-
-    padding: 30px;
 
     display: flex;
 
     justify-content: center;
 
     align-items: center;
+
+    padding: 30px;
+
+    overflow-x: hidden;
 }
 
 /* =======================================================
-   SIMULARE TELEFON DESKTOP
+   TELEFON PREMIUM DESKTOP
 ======================================================= */
 
-/* ===== RAMA TELEFON ===== */
-/* Pe desktop aplicatia apare ca un telefon desenat */
-
 #app {
+
     position: relative;
 
     width: 100%;
 
-    max-width: 430px;
+    max-width: 520px;
 
-    min-height: 880px;
+    min-height: 920px;
 
     background:
         linear-gradient(180deg, #181818 0%, #101010 100%);
 
-    border-radius: 48px;
+    border-radius: 55px;
 
-    padding: 95px 22px 30px 22px;
+    padding:
+        120px 30px 40px 30px;
 
     border:
-        3px solid rgba(214, 182, 110, 0.95);
+        3px solid rgba(214,182,110,0.95);
 
     box-shadow:
-        0 0 0 3px rgba(255,255,255,0.06),
-        0 0 0 10px #000000,
-        0 0 25px rgba(214,182,110,0.30),
-        0 40px 80px rgba(0,0,0,0.82),
-        inset 0 1px 0 rgba(255,255,255,0.10),
-        inset 0 0 20px rgba(214,182,110,0.08);
+        0 0 0 3px rgba(255,255,255,0.05),
+        0 0 0 12px #000000,
+        0 0 35px rgba(214,182,110,0.35),
+        0 50px 100px rgba(0,0,0,0.85);
 }
 
 /* ===== CAMERA TELEFON ===== */
-/* Decupajul negru de sus al telefonului */
 
 #app::before {
+
     content: "";
 
     position: absolute;
 
-    top: 22px;
+    top: 24px;
 
     left: 50%;
 
     transform: translateX(-50%);
 
-    width: 180px;
+    width: 210px;
 
-    height: 34px;
+    height: 42px;
 
     background: #000000;
+
+    border-radius: 30px;
+}
+
+/* ===== SENZOR TELEFON ===== */
+
+#app::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 40px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 70px;
+
+    height: 9px;
+
+    background: #222222;
 
     border-radius: 20px;
 }
 
-/* ===== SENZOR TELEFON ===== */
-/* Linia mica din decupajul de sus */
-
-#app::after {
-    content: "";
-
-    position: absolute;
-
-    top: 34px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 55px;
-
-    height: 8px;
-
-    background: #1f1f1f;
-
-    border-radius: 10px;
-}
-
 /* =======================================================
-   HEADER PREMIUM PRIMA PAGINA
+   HEADER PREMIUM
 ======================================================= */
 
-/* ===== CASETA FIRMA ===== */
-/* Zona de sus cu FIRMA TA si Modul demo */
-
 .hero-box {
-    margin-bottom: 40px;
 
-    padding: 34px 22px;
+    padding: 42px 20px;
+
+    border-radius: 28px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(212, 175, 55, 0.20),
-            rgba(255, 255, 255, 0.03)
+            rgba(212,175,55,0.20),
+            rgba(255,255,255,0.03)
         );
 
-    border: 1px solid rgba(212, 175, 55, 0.65);
-
-    border-radius: 24px;
+    border:
+        1px solid rgba(212,175,55,0.65);
 
     text-align: center;
 
     box-shadow:
-        0 18px 45px rgba(0, 0, 0, 0.55),
-        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        0 18px 45px rgba(0,0,0,0.50);
 }
 
 /* ===== TITLU FIRMA ===== */
-/* Textul mare FIRMA TA */
 
 .firma-title {
+
     color: #d4af37;
 
-    font-size: 46px;
+    font-size: 64px;
 
     font-weight: 900;
 
     letter-spacing: 3px;
-
-    line-height: 1.1;
 }
 
-/* ===== SUBTITLU MODUL DEMO ===== */
-/* Textul alb de sub FIRMA TA */
+/* ===== SUBTITLU ===== */
 
 .demo-subtitle {
-    margin-top: 12px;
+
+    margin-top: 14px;
 
     color: #ffffff;
 
-    font-size: 23px;
-
-    font-weight: 400;
-
-    letter-spacing: 1px;
-}
-
-/* ===== TITLU STANDARD ===== */
-/* Folosit pe paginile unde exista h1 */
-
-h1 {
-    font-size: 42px;
-
-    margin-bottom: 40px;
-
-    color: #d4af37;
+    font-size: 30px;
 }
 
 /* =======================================================
-   INPUTURI SI FILTRE
+   MENIU
 ======================================================= */
 
-/* ===== INPUTURI ===== */
-/* Campurile de cautare si filtre */
+.menu-buttons {
 
-input {
-    width: 100%;
-
-    height: 55px;
-
-    margin-bottom: 15px;
-
-    background: #1e1e1e;
-
-    border: 1px solid #444;
-
-    border-radius: 12px;
-
-    padding: 0 15px;
-
-    color: white;
-
-    font-size: 18px;
+    margin-top: 45px;
 }
 
-/* =======================================================
-   AUTOCOMPLETE
-======================================================= */
-
-/* ===== WRAPPER AUTOCOMPLETE ===== */
-/* Tine lista sub campul corect */
-
-.autocomplete-wrapper {
-    position: relative;
-}
-
-/* ===== LISTA AUTOCOMPLETE ===== */
-/* Lista cu sugestii */
-
-.autocomplete-box {
-    position: absolute;
-
-    top: 58px;
-
-    left: 0;
-
-    width: 100%;
-
-    background: #1e1e1e;
-
-    border: 1px solid #d4af37;
-
-    border-radius: 12px;
-
-    overflow: hidden;
-
-    z-index: 1000;
-}
-
-/* ===== ELEMENT AUTOCOMPLETE ===== */
-/* O sugestie din lista */
-
-.autocomplete-item {
-    padding: 15px;
-
-    cursor: pointer;
-
-    border-bottom: 1px solid #333;
-}
-
-/* ===== HOVER AUTOCOMPLETE ===== */
-/* Efect cand treci cu mouse-ul peste sugestie */
-
-.autocomplete-item:hover {
-    background: #d4af37;
-
-    color: #111111;
-}
-
-/* =======================================================
-   BUTOANE MENIU
-======================================================= */
-
-/* ===== BUTOANE PRINCIPALE ===== */
-/* Butoanele mari de pe prima pagina */
+/* ===== BUTOANE ===== */
 
 button {
+
     width: 100%;
 
-    height: 64px;
+    height: 82px;
 
-    margin-bottom: 22px;
+    margin-bottom: 26px;
 
     border: none;
 
-    border-radius: 16px;
+    border-radius: 20px;
 
     background:
         linear-gradient(
@@ -294,14 +195,14 @@ button {
 
     color: #111111;
 
-    font-size: 22px;
+    font-size: 30px;
 
     font-weight: bold;
 
     cursor: pointer;
 
     box-shadow:
-        0 14px 28px rgba(0,0,0,0.45),
+        0 16px 35px rgba(0,0,0,0.45),
         inset 0 1px 0 rgba(255,255,255,0.45);
 }
 
@@ -309,18 +210,17 @@ button {
    TELEFON REAL
 ======================================================= */
 
-/* ===== AFISARE PE TELEFON REAL ===== */
-/* Pe telefon se elimina rama desenata */
-
 @media (max-width: 700px) {
 
     body {
+
         padding: 0;
 
         align-items: flex-start;
     }
 
     #app {
+
         max-width: 100%;
 
         min-height: 100vh;
@@ -331,11 +231,30 @@ button {
 
         box-shadow: none;
 
-        padding: 30px 20px;
+        padding:
+            35px 20px 35px 20px;
     }
 
     #app::before,
     #app::after {
+
         display: none;
+    }
+
+    .firma-title {
+
+        font-size: 52px;
+    }
+
+    .demo-subtitle {
+
+        font-size: 23px;
+    }
+
+    button {
+
+        height: 70px;
+
+        font-size: 24px;
     }
 }
